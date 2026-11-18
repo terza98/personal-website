@@ -22,9 +22,9 @@ export const bands = [
 
 export const timeline = [
   { year: "2014", text: "Started building online stores" },
-  { year: "2017", text: "Founded Codersy, a Shopify Plus partner from year one" },
+  { year: "2017", text: "Founded Codersy" },
   { year: "2021", text: "BE in Information Technology, University of Belgrade" },
-  { year: "2025", text: "Nine Shopify certifications, from app development to headless" },
+  { year: "2025", text: "Codersy became a Shopify Plus partner. Nine Shopify certifications, from app development to headless" },
   { year: "2026", text: "Published the Shopify Speed Report, a test of 537 stores" },
 ];
 

@@ -137,3 +137,10 @@ test("education, certifications and writing from the Codersy author page are in 
   assert.equal(person.hasCredential.length, 9);
   assert.equal(person.image, "https://www.mladenterzic.com/assets/images/mladen-terzic.jpg");
 });
+
+test("Shopify Plus partner status is dated 2025, not the founding year", () => {
+  const text = markup.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  assert.match(text, /Shopify Plus partner since 2025/);
+  assert.match(text, /in 2025 it became a Shopify Plus partner/);
+  assert.ok(!/Plus partner (since 2017|from year one|that same year)/.test(text), "an old Shopify Plus date is still on the page");
+});

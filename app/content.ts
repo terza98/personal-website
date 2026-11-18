@@ -21,9 +21,8 @@ export const bands = [
 ];
 
 export const timeline = [
-  { year: "2014", text: "Started building online stores" },
-  { year: "2017", text: "Founded Codersy" },
-  { year: "2021", text: "BE in Information Technology, University of Belgrade" },
+  { year: "2014", text: "Started building online stores, as a freelancer" },
+  { year: "2023", text: "Opened Codersy as a company, after nine years of freelance work" },
   { year: "2025", text: "Codersy became a Shopify Plus partner. Nine Shopify certifications, from app development to headless" },
   { year: "2026", text: "Published the Shopify Speed Report, a test of 537 stores" },
 ];
@@ -62,7 +61,7 @@ export const skills = [
 ];
 
 export const jobs = [
-  { role: "CEO, Founder", org: "Codersy · Remote", when: "Present" },
+  { role: "CEO, Founder", org: "Codersy · Remote", when: "2023 — Present" },
   { role: "Senior Shopify Development Team Lead", org: "SecondShop · Calgary, Canada", when: "May 2024 — May 2025" },
   { role: "Lead Developer", org: "Marketplace Solutions · Remote", when: "Dec 2022 — Aug 2023" },
   { role: "Full-stack Shopify Developer", org: "Storetasker · Remote", when: "Sep 2022 — Present" },
@@ -74,7 +73,8 @@ export const jobs = [
 
 export const education = [
   {
-    degree: "Bachelor of Engineering, Information Technology",
+    // attended, degree not completed: never call this a bachelor's degree
+    degree: "Information Technology, undergraduate studies",
     school: "University of Belgrade, School of Electrical Engineering",
     href: "https://www.etf.bg.ac.rs/",
     when: "2017 — 2021",

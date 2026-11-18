@@ -94,8 +94,9 @@ export function About() {
   return (
     <Section id="about" label="About" rail={<Portrait />}>
       <p className="big">
-        I started building online stores in <Mark>2014</Mark>. Three years later I founded <Mark>Codersy</Mark>, and in
-        2025 it became a <Mark>Shopify Plus partner</Mark>. My mission is simple: help businesses scale and
+        I started building online stores in <Mark>2014</Mark> and freelanced for nine years. In 2023 I opened{" "}
+        <Mark>Codersy</Mark>, and in 2025 it became a <Mark>Shopify Plus partner</Mark>. My mission is simple: help
+        businesses scale and
         thrive in e-commerce.
       </p>
       <p className="body" data-rv>
@@ -163,7 +164,7 @@ export function Experience() {
 export function Education() {
   return (
     <Section id="education" label="Education">
-      <Heading>Engineer by training.</Heading>
+      <Heading>Where I studied.</Heading>
       <ol className="jobs" data-rv>
         {education.map((e) => (
           <li className="job" key={e.school}>
@@ -239,7 +240,7 @@ export function Writing() {
 export function Codersy() {
   return (
     <Section id="codersy" label="Codersy">
-      <Heading>The agency I founded in 2017.</Heading>
+      <Heading>The agency I founded in 2023.</Heading>
       <p className="lede" data-rv>
         We design, build and optimize Shopify stores so they sell, and so AI assistants recommend them. Shoppers now ask
         ChatGPT what to buy. We make sure your products are the answer.

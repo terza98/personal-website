@@ -112,7 +112,8 @@ test("the portrait is in the page, with alt text and a fallback format", () => {
 
 test("education, certifications and writing from the Codersy author page are in the page", () => {
   const text = markup.replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
-  assert.match(text, /Bachelor of Engineering, Information Technology/);
+  assert.match(text, /Information Technology, undergraduate studies/);
+  assert.ok(!/Bachelor|\bBE in\b|degree/i.test(text), "the page claims a completed degree");
   assert.match(text, /University of Belgrade, School of Electrical Engineering/);
   assert.match(text, /Electrical Engineering High School “Nikola Tesla”/);
   assert.match(text, /2017 — 2021/);
@@ -143,4 +144,8 @@ test("Shopify Plus partner status is dated 2025, not the founding year", () => {
   assert.match(text, /Shopify Plus partner since 2025/);
   assert.match(text, /in 2025 it became a Shopify Plus partner/);
   assert.ok(!/Plus partner (since 2017|from year one|that same year)/.test(text), "an old Shopify Plus date is still on the page");
+  // the company was opened in 2023; before that the work was freelance
+  assert.match(text, /The agency I founded in 2023\./);
+  assert.match(text, /In 2023 I opened Codersy/);
+  assert.ok(!/founded (Codersy )?in 2017|Founded Codersy|Three years later/.test(text), "the page still dates the company to 2017");
 });

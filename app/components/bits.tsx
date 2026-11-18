@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { EMAIL } from "~/content";
+import { EMAIL, PHOTO } from "~/content";
 
 /** Section heading whose words rise out of a mask when it scrolls into view. */
 export function Heading({ children }: { children: string }) {
@@ -50,26 +50,13 @@ export function Section({
   );
 }
 
-const PORTRAIT = "/assets/images/hello-section";
-
 /** The headshot. Black and white to sit with the page, in colour under the pointer. */
 export function Portrait() {
   return (
     <figure className="portrait" data-rv>
       <picture>
-        <source
-          type="image/avif"
-          srcSet={`${PORTRAIT}/portrait-400.avif 400w, ${PORTRAIT}/portrait-800.avif 800w`}
-          sizes="(max-width: 820px) min(26rem, 100vw), 25vw"
-        />
-        <img
-          src={`${PORTRAIT}/portrait-800.jpg`}
-          alt="Portrait of Mladen Terzić"
-          width={800}
-          height={800}
-          loading="lazy"
-          decoding="async"
-        />
+        <source type="image/avif" srcSet={`${PHOTO}.avif`} />
+        <img src={`${PHOTO}.jpg`} alt="Portrait of Mladen Terzić" width={800} height={800} loading="lazy" decoding="async" />
       </picture>
     </figure>
   );

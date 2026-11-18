@@ -94,6 +94,14 @@ ol {
   text-transform: uppercase;
   color: var(--muted);
 }
+/* a label that heads a block inside a section */
+.cap {
+  margin-bottom: 1rem;
+}
+.more {
+  margin-top: 1.25rem;
+  font-size: 0.98rem;
+}
 .h2 {
   font-family: var(--display);
   font-weight: 700;
@@ -573,6 +581,49 @@ section[id],
   }
 }
 
+.job-org a {
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+}
+/* compact rows: certifications, articles */
+.list {
+  border-bottom: 1px solid var(--line);
+}
+.list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.25rem 1.5rem;
+  align-items: baseline;
+  padding-block: 0.8rem;
+  border-top: 1px solid var(--line);
+}
+.list a {
+  font-size: 1.04rem;
+  line-height: 1.35;
+  text-decoration: none;
+  background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 60%/0% 78%;
+  transition: background-size 0.45s var(--ease);
+}
+.list a:hover {
+  background-size: 100% 78%;
+  color: var(--on-mark);
+}
+.list small {
+  font: 400 0.76rem/1.3 var(--mono);
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 640px) {
+  .list li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .list small {
+    text-align: left;
+  }
+}
+
 /* ---------- codersy ---------- */
 .num {
   display: block;
@@ -986,6 +1037,7 @@ html.rm {
 .rm .lnk,
 .rm .timeline time,
 .rm .portrait img,
+.rm .list a,
 .rm .svc li,
 .rm .row-go {
   transition: none;

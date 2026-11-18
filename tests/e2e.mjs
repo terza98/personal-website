@@ -151,8 +151,28 @@ const lineWidths = (page, sel) =>
     assert.ok(p.w > 180 && Math.abs(p.h / p.w - 1.25) < 0.02, `portrait is ${p.w}x${p.h}`);
     assert.ok(p.right <= p.mainLeft, "portrait overlaps the text column");
     assert.match(p.clip, /inset\(0(px)?\)/, `clip-path is ${p.clip}`);
-    assert.match(p.src, /portrait-\d+\.avif$/, `loaded ${p.src}`);
+    assert.match(p.src, /mladen-terzic\.avif$/, `loaded ${p.src}`);
     await page.locator("#about").screenshot({ path: join(shots, "about-portrait.png") });
+  });
+
+  await check("education, certifications, writing and reviews are shown and their rows fit the column", async () => {
+    for (const id of ["education", "writing", "feedback"]) {
+      const sec = page.locator(`#${id}`);
+      await sec.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(700);
+      await page.evaluate((i) => window.scrollTo(0, document.getElementById(i).getBoundingClientRect().top + scrollY), id);
+      await page.waitForTimeout(1200);
+      await sec.screenshot({ path: join(shots, `desktop-${id}.png`) });
+    }
+    const r = await page.evaluate(() => ({
+      certs: document.querySelectorAll("#certifications .list li").length,
+      schools: document.querySelectorAll("#education .job").length,
+      posts: document.querySelectorAll("#writing .list li").length,
+      reviews: document.querySelectorAll("#feedback .quotes figure").length,
+      hidden: [...document.querySelectorAll("#education [data-rv], #writing [data-rv]")].filter((e) => getComputedStyle(e).opacity !== "1").length,
+      overflow: [...document.querySelectorAll(".list li, .job")].filter((e) => e.scrollWidth > e.clientWidth + 1).length,
+    }));
+    assert.deepEqual(r, { certs: 9, schools: 2, posts: 5, reviews: 10, hidden: 0, overflow: 0 });
   });
 
   await check("work rows cycle on their own and the rail shows the active number", async () => {

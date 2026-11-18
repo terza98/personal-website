@@ -1,9 +1,19 @@
 import {
+  articles,
+  AUTHOR_URL,
   BOOK_URL,
+  certifications,
   clientSites,
+  CREDLY_URL,
+  education,
+  expertise,
+  GLOSSARY_URL,
   jobs,
   nav,
   quotes,
+  research,
+  reviews,
+  reviewSources,
   services,
   skills,
   socials,
@@ -11,6 +21,10 @@ import {
   timeline,
   ventures,
 } from "~/content";
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+/** "2025-08" to "Aug 2025" */
+const monthYear = (ym: string) => `${MONTHS[Number(ym.slice(5)) - 1]} ${ym.slice(0, 4)}`;
 import { Clock, Email, Heading, Mark, Out, Portrait, Section } from "./bits";
 import { Kinetic } from "./Kinetic";
 
@@ -88,7 +102,20 @@ export function About() {
         My main objective is to meet every client's requirements at the highest possible standard. One client described
         the way I work as a “nothing is impossible” approach.
       </p>
-      <ol className="timeline anchor" id="education" data-rv>
+      <p className="body" data-rv>
+        Today Codersy is a team of 16, rated 5.0 across 26 client reviews. I work on custom Shopify themes, Shopify Plus
+        builds, headless Hydrogen storefronts and migrations, and we publish 7 apps on the Shopify App Store. I wrote
+        the{" "}
+        <Out className="lnk" href={research.href}>
+          Shopify Speed Report 2026
+        </Out>
+        , a test of 537 stores, and I review every term in the{" "}
+        <Out className="lnk" href={GLOSSARY_URL}>
+          Codersy Shopify Glossary
+        </Out>
+        .
+      </p>
+      <ol className="timeline" data-rv>
         {timeline.map((t) => (
           <li key={t.year}>
             <time dateTime={t.year}>{t.year}</time>
@@ -96,7 +123,15 @@ export function About() {
           </li>
         ))}
       </ol>
-      <div className="skills anchor" id="skills" data-rv>
+      <div className="anchor" id="skills" data-rv>
+        <p className="label cap">Expertise</p>
+        <ul className="svc">
+          {expertise.map((e) => (
+            <li key={e}>{e}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="skills" data-rv>
         {skills.map((s) => (
           <div key={s.title}>
             <h3>{s.title}</h3>
@@ -111,7 +146,7 @@ export function About() {
 export function Experience() {
   return (
     <Section id="experience" label="Experience">
-      <Heading>Ten years of shipping.</Heading>
+      <Heading>Shipping since 2014.</Heading>
       <ol className="jobs" data-rv>
         {jobs.map((j) => (
           <li className="job" key={j.role + j.org}>
@@ -121,6 +156,82 @@ export function Experience() {
           </li>
         ))}
       </ol>
+    </Section>
+  );
+}
+
+export function Education() {
+  return (
+    <Section id="education" label="Education">
+      <Heading>Engineer by training.</Heading>
+      <ol className="jobs" data-rv>
+        {education.map((e) => (
+          <li className="job" key={e.school}>
+            <span className="job-role">{e.degree}</span>
+            <span className="job-org">
+              <Out href={e.href}>{e.school}</Out>
+            </span>
+            <span className="job-when">{e.when}</span>
+          </li>
+        ))}
+      </ol>
+      <div className="anchor" id="certifications" data-rv>
+        <p className="label cap">Certifications · issued by Shopify</p>
+        <ol className="list">
+          {certifications.map((c) => (
+            <li key={c.href}>
+              <Out href={c.href}>{c.name}</Out>
+              <small>
+                {monthYear(c.issued)}
+                {c.expires ? ` · valid to ${monthYear(c.expires)}` : ""}
+              </small>
+            </li>
+          ))}
+        </ol>
+        <p className="more">
+          <Out className="lnk" href={CREDLY_URL}>
+            All badges on Credly ↗
+          </Out>
+        </p>
+      </div>
+    </Section>
+  );
+}
+
+export function Writing() {
+  return (
+    <Section id="writing" label="Writing">
+      <Heading>Writing and research.</Heading>
+      <ul className="rows" data-rv>
+        <li>
+          <Out className="row plain" href={research.href}>
+            <span className="row-name">{research.title}</span>
+            <span className="row-meta">{research.meta}</span>
+            <span className="row-go" aria-hidden="true">
+              ↗
+            </span>
+          </Out>
+        </li>
+      </ul>
+      <p className="body" data-rv>
+        {research.summary}
+      </p>
+      <div data-rv>
+        <p className="label cap">Recent articles on the Codersy blog</p>
+        <ol className="list">
+          {articles.map((a) => (
+            <li key={a.href}>
+              <Out href={a.href}>{a.title}</Out>
+              <small>{a.when}</small>
+            </li>
+          ))}
+        </ol>
+        <p className="more">
+          <Out className="lnk" href={AUTHOR_URL}>
+            All my articles on Codersy ↗
+          </Out>
+        </p>
+      </div>
     </Section>
   );
 }
@@ -194,6 +305,27 @@ export function Words() {
           </figure>
         ))}
       </div>
+      <div data-rv>
+        <p className="label cap">From Upwork and Storetasker</p>
+        <div className="quotes">
+          {reviews.map((r) => (
+            <figure key={r.text}>
+              <blockquote>“{r.text}”</blockquote>
+              <figcaption className="who">
+                <b>{r.client}</b>
+                <span>{r.source}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="more links">
+          {reviewSources.map((r) => (
+            <a key={r.href} className="lnk" href={r.href} target="_blank" rel="noopener nofollow">
+              {r.label} ↗
+            </a>
+          ))}
+        </p>
+      </div>
     </Section>
   );
 }
@@ -216,7 +348,7 @@ export function Elsewhere() {
         ))}
       </ul>
       <div data-rv>
-        <p className="label" style={{ marginBottom: "1rem" }}>
+        <p className="label cap">
           Client sites from earlier years
         </p>
         <ul className="sites">

@@ -1,16 +1,28 @@
 import { useEffect } from "react";
 import { Bands } from "~/components/Bands";
 import { MotionSwitch } from "~/components/bits";
-import { About, Codersy, Contact, Elsewhere, Experience, Footer, Header, Hero, Words } from "~/components/sections";
+import {
+  About,
+  Codersy,
+  Contact,
+  Education,
+  Elsewhere,
+  Experience,
+  Footer,
+  Header,
+  Hero,
+  Words,
+  Writing,
+} from "~/components/sections";
 import { Work } from "~/components/Work";
-import { EMAIL, SITE_URL, socials } from "~/content";
+import { AUTHOR_URL, certifications, education, EMAIL, PHOTO, SITE_URL, socials } from "~/content";
 import { useArrivals } from "~/lib/arrivals";
 import type { Route } from "./+types/home";
 
 const TITLE = "Mladen Terzić - Full-Stack Developer & Shopify Expert";
 const DESCRIPTION =
   "Senior Full-Stack Developer & Shopify Expert with 10+ years experience. Agency owner of Codersy.com specializing in React, Next.js & e-commerce.";
-const IMAGE = `${SITE_URL}/assets/images/hello-section/profilna.avif`;
+const IMAGE = `${SITE_URL}${PHOTO}.jpg`;
 
 const person = {
   "@context": "https://schema.org",
@@ -24,7 +36,7 @@ const person = {
   worksFor: { "@type": "Organization", name: "Codersy", url: "https://codersy.com" },
   address: { "@type": "PostalAddress", addressLocality: "Lazarevac", addressCountry: "Serbia" },
   email: `${EMAIL.user}@${EMAIL.domain}`,
-  sameAs: socials.map((s) => s.href),
+  sameAs: [...socials.map((s) => s.href), AUTHOR_URL],
   knowsAbout: [
     "Full-Stack Development",
     "Shopify Development",
@@ -39,8 +51,21 @@ const person = {
     "OpenAI API",
     "Remix",
     "Hydrogen",
+    "Liquid (template language)",
+    "Headless commerce",
+    "Shopify app development",
+    "Shopify Functions",
+    "Core Web Vitals",
+    "Ecommerce platform migration",
+    "Technical SEO",
   ],
-  alumniOf: { "@type": "Organization", name: "Belgrade University" },
+  alumniOf: education.map((e) => ({ "@type": "EducationalOrganization", name: e.school, url: e.href })),
+  hasCredential: certifications.map((c) => ({
+    "@type": "EducationalOccupationalCredential",
+    name: c.name,
+    url: c.href,
+    recognizedBy: { "@type": "Organization", name: "Shopify" },
+  })),
 };
 
 const organization = {
@@ -105,8 +130,10 @@ export default function Home() {
         <Bands />
         <About />
         <Experience />
+        <Education />
         <Codersy />
         <Work />
+        <Writing />
         <Words />
         <Elsewhere />
         <Contact />

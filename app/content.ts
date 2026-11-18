@@ -22,6 +22,7 @@ export const bands = [
 
 export const timeline = [
   { year: "2014", text: "Started building online stores, as a freelancer" },
+  { year: "2017", text: "Became a Shopify partner, as a freelancer" },
   { year: "2023", text: "Opened Codersy as a company, after nine years of freelance work" },
   { year: "2025", text: "Codersy became a Shopify Plus partner. Nine Shopify certifications, from app development to headless" },
   { year: "2026", text: "Published the Shopify Speed Report, a test of 537 stores" },
@@ -52,7 +53,7 @@ export const skills = [
   },
   {
     title: "CMS development",
-    items: "WordPress, Squarespace, Shopify, Wix, Magento, OpenCart, Instapage, ClickFunnels, Thinkific",
+    items: "Sanity, WordPress, Squarespace, Shopify, Wix, Magento, OpenCart, Instapage, ClickFunnels, Thinkific",
   },
   {
     title: "Consulting and SEO audits",

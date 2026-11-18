@@ -53,7 +53,7 @@ export function Hero() {
     <section className="hero wrap" id="hello">
       <div className="meta-row label">
         <span>Founder &amp; CEO, Codersy</span>
-        <span>Shopify Plus partner since 2025</span>
+        <span>Shopify partner since 2017, Plus since 2025</span>
         <span>Belgrade, Serbia</span>
       </div>
       <Kinetic
@@ -94,10 +94,9 @@ export function About() {
   return (
     <Section id="about" label="About" rail={<Portrait />}>
       <p className="big">
-        I started building online stores in <Mark>2014</Mark> and freelanced for nine years. In 2023 I opened{" "}
-        <Mark>Codersy</Mark>, and in 2025 it became a <Mark>Shopify Plus partner</Mark>. My mission is simple: help
-        businesses scale and
-        thrive in e-commerce.
+        I started building online stores in <Mark>2014</Mark> and became a Shopify partner in 2017, as a freelancer. In
+        2023 I opened <Mark>Codersy</Mark>, and in 2025 it became a <Mark>Shopify Plus partner</Mark>. My mission is
+        simple: help businesses scale and thrive in e-commerce.
       </p>
       <p className="body" data-rv>
         My main objective is to meet every client's requirements at the highest possible standard. One client described

@@ -141,7 +141,8 @@ test("education, certifications and writing from the Codersy author page are in 
 
 test("Shopify Plus partner status is dated 2025, not the founding year", () => {
   const text = markup.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
-  assert.match(text, /Shopify Plus partner since 2025/);
+  assert.match(text, /Shopify partner since 2017, Plus since 2025/);
+  assert.match(text, /became a Shopify partner in 2017, as a freelancer/);
   assert.match(text, /in 2025 it became a Shopify Plus partner/);
   assert.ok(!/Plus partner (since 2017|from year one|that same year)/.test(text), "an old Shopify Plus date is still on the page");
   // the company was opened in 2023; before that the work was freelance
